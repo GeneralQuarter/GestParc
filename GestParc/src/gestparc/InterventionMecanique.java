@@ -8,6 +8,7 @@ package gestparc;
 
 import gestparc.enumPack.PieceMecanique;
 import gestparc.enumPack.TypeMecanique;
+import java.util.Calendar;
 
 /**
  *
@@ -16,6 +17,7 @@ import gestparc.enumPack.TypeMecanique;
 public class InterventionMecanique implements Intervention{
     private TypeMecanique typeIntervention;
     private PieceMecanique piece;
+    private final Calendar dateIntervention;
 
     public TypeMecanique getTypeIntervention() {
         return typeIntervention;
@@ -28,5 +30,6 @@ public class InterventionMecanique implements Intervention{
     public InterventionMecanique(TypeMecanique typeIntervention, PieceMecanique piece) {
         this.typeIntervention = typeIntervention;
         this.piece = piece;
+        this.dateIntervention = Calendar.getInstance();
     }
 }

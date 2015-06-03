@@ -8,6 +8,7 @@ package gestparc;
 
 import gestparc.enumPack.PieceCarrosserie;
 import gestparc.enumPack.TypeCarrosserie;
+import java.util.Calendar;
 
 /**
  *
@@ -16,10 +17,12 @@ import gestparc.enumPack.TypeCarrosserie;
 public class InterventionCarrosserie implements Intervention {
     private TypeCarrosserie typeIntervention;
     private PieceCarrosserie piece;
+    private final Calendar dateIntervention;
 
     public InterventionCarrosserie(TypeCarrosserie typeIntervention, PieceCarrosserie piece) {
         this.typeIntervention = typeIntervention;
         this.piece = piece;
+        dateIntervention = Calendar.getInstance();
     }
 
     public TypeCarrosserie getTypeIntervention() {
