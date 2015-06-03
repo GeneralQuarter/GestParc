@@ -6,10 +6,22 @@
 
 package gestparc;
 
+import java.util.Calendar;
+
 /**
  *
  * @author qgangler
  */
-public class VehiculeTransportPassage {
+public class VehiculeTransportPassage extends Vehicule{
+    private String nomDepot;
+
+    public VehiculeTransportPassage(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, String nomDepot) {
+        super(kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule);
+        this.nomDepot=nomDepot;
+    }
+
+    public String getNomDepot() {
+        return nomDepot;
+    }
     
 }
