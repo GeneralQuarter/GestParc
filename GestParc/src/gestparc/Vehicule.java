@@ -6,6 +6,7 @@
 
 package gestparc;
 
+import gestparc.enumPack.Categorie;
 import gestparc.enumPack.Couleur;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,9 +25,10 @@ public abstract class Vehicule {
     private int kilometrageApresRevision;
     private int tempsCirculation;
     private Couleur couleur;
+    private Categorie categorie;
     private List<Intervention> interventions;
 
-    public Vehicule(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule) {
+    public Vehicule(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie) {
         this.kilometrageMaxAnnuel = kilometrageMaxAnnuel;
         this.kilometrageMaxApresRevision = kilometrageMaxApresRevision;
         this.dureeVieMax = dureeVieMax;
@@ -35,6 +37,7 @@ public abstract class Vehicule {
         this.kilometrageApresRevision = 0;
         this.tempsCirculation = 0;
         this.couleur = Couleur.VERT;
+        this.categorie = categorie;
         this.interventions = new ArrayList<>();
     }
     

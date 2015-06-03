@@ -6,6 +6,7 @@
 
 package gestparc;
 
+import gestparc.enumPack.Categorie;
 import java.util.Calendar;
 
 /**
@@ -15,11 +16,10 @@ import java.util.Calendar;
 public class VehiculeTransportEmploye extends Vehicule{
     private String nomSite;
 
-    public VehiculeTransportEmploye(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, String nomSite) {
-        super(kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule);
+    public VehiculeTransportEmploye(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie , String nomSite) {
+        super(kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
         this.nomSite=nomSite;
     }
-
     
     public String getNomSite(){
         return nomSite;
