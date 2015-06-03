@@ -6,10 +6,27 @@
 
 package gestparc;
 
+import gestparc.enumPack.PieceMecanique;
+import gestparc.enumPack.TypeMecanique;
+
 /**
  *
  * @author qgangler
  */
-public class InterventionMecanique {
-    
+public class InterventionMecanique implements Intervention{
+    private TypeMecanique typeIntervention;
+    private PieceMecanique piece;
+
+    public TypeMecanique getTypeIntervention() {
+        return typeIntervention;
+    }
+
+    public PieceMecanique getPiece() {
+        return piece;
+    }
+
+    public InterventionMecanique(TypeMecanique typeIntervention, PieceMecanique piece) {
+        this.typeIntervention = typeIntervention;
+        this.piece = piece;
+    }
 }

@@ -10,6 +10,6 @@ package gestparc;
  *
  * @author qgangler
  */
-public class Intervention {
+public interface Intervention {
     
 }
