@@ -25,5 +25,22 @@ public class VehiculeService extends Vehicule{
         this.dateDebutAff = dateDebutAff;
         this.dateFinAff = dateFinAff;
     }
+
+    public boolean isAffecte() {
+        return affecte;
+    }
+
+    public String getNomResponsable() {
+        return nomResponsable;
+    }
+
+    public Calendar getDateDebutAff() {
+        return dateDebutAff;
+    }
+
+    public Calendar getDateFinAff() {
+        return dateFinAff;
+    }
+    
     
 }

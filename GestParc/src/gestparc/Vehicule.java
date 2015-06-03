@@ -7,7 +7,9 @@
 package gestparc;
 
 import gestparc.enumPack.Couleur;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -22,6 +24,7 @@ public abstract class Vehicule {
     private int kilometrageApresRevision;
     private int tempsCirculation;
     private Couleur couleur;
+    private List<Intervention> interventions;
 
     public Vehicule(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule) {
         this.kilometrageMaxAnnuel = kilometrageMaxAnnuel;
@@ -32,6 +35,27 @@ public abstract class Vehicule {
         this.kilometrageApresRevision = 0;
         this.tempsCirculation = 0;
         this.couleur = Couleur.VERT;
+        this.interventions = new ArrayList<>();
+    }
+    
+    public void ajouterIntervention(Intervention intervention)
+    {
+        if(!interventions.contains(intervention))
+        {
+            interventions.add(intervention);
+        }else{
+            System.out.println("Cette intervention existe déja !");
+        }
+    }
+    
+    public void supprimerIntervention(Intervention intervention)
+    {
+        if(interventions.contains(intervention))
+        {
+            interventions.add(intervention);
+        }else{
+            System.out.println("Cette intervention n'est pas attribuée à ce vehicule !");
+        }
     }
 
     public int getKilometrageMaxAnnuel() {
