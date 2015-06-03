@@ -16,8 +16,8 @@ import java.util.Calendar;
 public class VehiculeTransportPassage extends Vehicule{
     private String nomDepot;
 
-    public VehiculeTransportPassage(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, String nomDepot) {
-        super(kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
+    public VehiculeTransportPassage(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, String nomDepot) {
+        super(immatriculation, kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
         this.nomDepot=nomDepot;
     }
 

@@ -6,7 +6,6 @@
 
 package gestparc.modele;
 
-import gestparc.Intervention;
 import gestparc.modele.enums.Categorie;
 import gestparc.modele.enums.Couleur;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ import java.util.List;
  * @author qgangler
  */
 public abstract class Vehicule {
+    private final String immatriculation;
     private final int kilometrageMaxAnnuel;
     private final int kilometrageMaxApresRevision;
     private final int dureeVieMax;
@@ -29,7 +29,8 @@ public abstract class Vehicule {
     private Categorie categorie;
     private List<Intervention> interventions;
 
-    public Vehicule(int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie) {
+    public Vehicule(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie) {
+        this.immatriculation = immatriculation;
         this.kilometrageMaxAnnuel = kilometrageMaxAnnuel;
         this.kilometrageMaxApresRevision = kilometrageMaxApresRevision;
         this.dureeVieMax = dureeVieMax;
@@ -60,6 +61,10 @@ public abstract class Vehicule {
         }else{
             System.out.println("Cette intervention n'est pas attribuée à ce vehicule !");
         }
+    }
+    
+    public String getImmatriculation(){
+        return immatriculation;
     }
 
     public int getKilometrageMaxAnnuel() {
