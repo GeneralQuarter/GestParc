@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package gestparc.enumPack;
+package gestparc.modele.enums;
 
 /**
  *

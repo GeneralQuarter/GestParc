@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package gestparc;
+package gestparc.modele;
 
 import java.util.ArrayList;
 import java.util.List;

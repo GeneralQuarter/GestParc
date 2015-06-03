@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 
-package gestparc;
+package gestparc.modele;
 
-import gestparc.enumPack.PieceCarrosserie;
-import gestparc.enumPack.TypeCarrosserie;
+import gestparc.modele.enums.PieceCarrosserie;
+import gestparc.modele.enums.TypeCarrosserie;
+import gestparc.modele.enums.PieceCarrosserie;
+import gestparc.modele.enums.TypeCarrosserie;
 import java.util.Calendar;
 
 /**

@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
-package gestparc;
+package gestparc.modele;
 
-import gestparc.enumPack.Categorie;
-import gestparc.enumPack.Couleur;
+import gestparc.Intervention;
+import gestparc.modele.enums.Categorie;
+import gestparc.modele.enums.Couleur;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

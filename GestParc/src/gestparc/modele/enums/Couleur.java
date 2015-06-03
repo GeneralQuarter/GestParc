@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package gestparc.enumPack;
+package gestparc.modele.enums;
 
 /**
  *
  * @author vpivet
  */
-public enum TypeCarrosserie {
-    RAYURE, DEBOSSELAGE, REMPLACEMENT, REDRESSEMENT, PROTECTION;
+public enum Couleur {
+    VERT, ORANGE, ROUGE;
 }

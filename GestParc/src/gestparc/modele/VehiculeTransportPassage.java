@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package gestparc;
+package gestparc.modele;
 
-import gestparc.enumPack.Categorie;
+import gestparc.modele.enums.Categorie;
 import java.util.Calendar;
 
 /**

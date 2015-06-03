@@ -1,6 +1,6 @@
 
-import gestparc.Vehicule;
-import gestparc.enumPack.Categorie;
+import gestparc.modele.Vehicule;
+import gestparc.modele.enums.Categorie;
 import java.util.Calendar;
 
 /*
