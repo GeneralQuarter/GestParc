@@ -7,7 +7,7 @@
 package gestparc.modele.enums;
 
 /**
- *
+ * Enumération des différentes pièces de carrosserie
  * @author vpivet
  */
 public enum PieceCarrosserie {

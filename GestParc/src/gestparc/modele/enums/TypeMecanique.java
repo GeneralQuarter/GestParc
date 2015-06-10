@@ -7,7 +7,7 @@
 package gestparc.modele.enums;
 
 /**
- *
+ * Enumération sur les différents types d'intervention de type mécanique
  * @author vpivet
  */
 public enum TypeMecanique {

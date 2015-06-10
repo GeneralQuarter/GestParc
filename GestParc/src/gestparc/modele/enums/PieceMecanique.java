@@ -7,7 +7,7 @@
 package gestparc.modele.enums;
 
 /**
- *
+ * Enumération des différentes pièces mécaniques.
  * @author vpivet
  */
 public enum PieceMecanique {

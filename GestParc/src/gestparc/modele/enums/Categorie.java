@@ -7,7 +7,7 @@
 package gestparc.modele.enums;
 
 /**
- *
+ * Enumération des différentes catégories de véhicule
  * @author vpivet
  */
 public enum Categorie {

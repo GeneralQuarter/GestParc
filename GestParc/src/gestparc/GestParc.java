@@ -11,7 +11,7 @@ import gestparc.vue.TableauBord;
 import javax.swing.SwingUtilities;
 
 /**
- *
+ * Main class de l'application
  * @author qgangler
  */
 public class GestParc {

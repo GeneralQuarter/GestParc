@@ -7,7 +7,7 @@
 package gestparc.modele.enums;
 
 /**
- *
+ * Enumération des différents types d'intervention sur la carrosserie.
  * @author vpivet
  */
 public enum TypeCarrosserie {
