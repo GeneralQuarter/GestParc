@@ -6,6 +6,10 @@
 
 package gestparc;
 
+import gestparc.controleur.Controleur;
+import gestparc.vue.TableauBord;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author qgangler
@@ -13,10 +17,21 @@ package gestparc;
 public class GestParc {
 
     /**
-     * @param args the command line arguments
+     * Fonction principale du programme
+     * Instantiation du controleur et de la vue
+     * @param args 
+     * 
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SwingUtilities.invokeLater(new Runnable(){
+
+            @Override
+            public void run() {
+                Controleur ctrl = new Controleur();
+                TableauBord tb = new TableauBord(ctrl);
+            }
+            
+        });
     }
     
 }

@@ -101,5 +101,9 @@ public abstract class Vehicule {
         return couleur;
     }
     
+    public Categorie getCategorie()
+    {
+        return categorie;
+    }
     
 }

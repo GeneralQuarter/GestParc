@@ -18,7 +18,6 @@ public class VehiculeService extends Vehicule{
     private String nomResponsable; 
     private Calendar dateDebutAff; 
     private Calendar dateFinAff;
-    private Categorie categorie;
 
     public VehiculeService(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, boolean affecte, String nomResponsable, Calendar dateDebutAff, Calendar dateFinAff) {
         super(immatriculation, kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);

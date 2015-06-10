@@ -13,24 +13,39 @@ import gestparc.modele.enums.TypeCarrosserie;
 import java.util.Calendar;
 
 /**
- *
+ * Objet qui représente une intervention sur la carrosserie d'un vehicule
  * @author qgangler
  */
 public class InterventionCarrosserie implements Intervention {
     private TypeCarrosserie typeIntervention;
     private PieceCarrosserie piece;
     private final Calendar dateIntervention;
-
+    
+    /**
+     * Constructeur de la classe
+     * @param typeIntervention le type d'intervention
+     * @param piece la piece concernée
+     * @see TypeCarrosserie
+     * @see PieceCarrosserie
+     */
     public InterventionCarrosserie(TypeCarrosserie typeIntervention, PieceCarrosserie piece) {
         this.typeIntervention = typeIntervention;
         this.piece = piece;
         dateIntervention = Calendar.getInstance();
     }
-
+    
+    /**
+     * Getter du type de carrosserie
+     * @return type de carrosserie de l'intervention
+     */
     public TypeCarrosserie getTypeIntervention() {
         return typeIntervention;
     }
-
+    
+    /**
+     * Getter de la piece concernée
+     * @return piece concernée pour l'intervention
+     */
     public PieceCarrosserie getPiece() {
         return piece;
     }

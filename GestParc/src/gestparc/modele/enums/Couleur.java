@@ -6,10 +6,23 @@
 
 package gestparc.modele.enums;
 
+import java.awt.Color;
+
 /**
  *
  * @author vpivet
  */
 public enum Couleur {
-    VERT, ORANGE, ROUGE;
+    VERT(Color.green), ORANGE(Color.orange), ROUGE(Color.red);
+    private final Color color;
+    
+    Couleur(Color color)
+    {
+        this.color = color;
+    }
+    
+    public Color getColor()
+    {
+        return color;
+    }
 }

@@ -10,16 +10,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe qui représente un parc de voitures (d'une agence par ex)
  * @author qgangler
  */
 public class Parc {
     private List<Vehicule> vehicules;
 
+    /**
+     * Constructeur de la classe
+     */
     public Parc() {
         this.vehicules = new ArrayList<>();
     }
     
+    /**
+     * Permet d'ajouter un vehicule au parc
+     * @param vehicule le véhicule à rajouter
+     * @see Vehicule
+     */
     public void ajouterVehicule(Vehicule vehicule){
         if(!vehicules.contains(vehicule)){
             vehicules.add(vehicule);
@@ -28,6 +36,11 @@ public class Parc {
         }
     }
     
+    /**
+     * Permet de supprimer un vehicule du parc
+     * @param vehicule le véhicule à supprimer
+     * @see Vehicule
+     */
     public void retirerVehicule(Vehicule vehicule){
         if(vehicules.contains(vehicule)){
             vehicules.remove(vehicule);

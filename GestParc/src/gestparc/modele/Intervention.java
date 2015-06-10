@@ -7,9 +7,8 @@
 package gestparc.modele;
 
 /**
- *
+ * Interface regroupant les deux types d'intervention
  * @author qgangler
  */
-public interface Intervention {
-    
+public interface Intervention {    
 }
