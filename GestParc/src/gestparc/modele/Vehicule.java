@@ -10,6 +10,7 @@ import gestparc.modele.enums.Categorie;
 import gestparc.modele.enums.Couleur;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public abstract class Vehicule {
     private final int kilometrageMaxAnnuel;
     private final int kilometrageMaxApresRevision;
     private final int dureeVieMax;
-    private final Calendar dateArrVehicule;
+    private final Date dateArrVehicule;
     private int kilometrageAnnuel;
     private int kilometrageApresRevision;
     private int tempsCirculation;
@@ -39,7 +40,7 @@ public abstract class Vehicule {
      * @param dateArrVehicule la date d'arrivée du vehicule dans le parc
      * @param categorie la catégorie du vehicule
      */
-    public Vehicule(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie) {
+    public Vehicule(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Date dateArrVehicule, Categorie categorie) {
         this.immatriculation = immatriculation;
         this.kilometrageMaxAnnuel = kilometrageMaxAnnuel;
         this.kilometrageMaxApresRevision = kilometrageMaxApresRevision;
@@ -120,7 +121,7 @@ public abstract class Vehicule {
      * Getter sur la date d'arriver du vehicule
      * @return la dureeVieMax du vehicule
      */
-    public Calendar getDateArrVehicule() {
+    public Date getDateArrVehicule() {
         return dateArrVehicule;
     }
 

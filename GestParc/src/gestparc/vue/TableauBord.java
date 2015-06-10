@@ -28,6 +28,7 @@ public class TableauBord extends javax.swing.JFrame {
      */
     public TableauBord(Controleur ctrl) {
         this.ctrl = ctrl;
+        this.ctrl.setTableauBord(this);
                 try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {

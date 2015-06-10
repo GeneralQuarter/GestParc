@@ -8,6 +8,7 @@ package gestparc.vue;
 
 import gestparc.controleur.Controleur;
 import gestparc.modele.enums.Categorie;
+import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -22,13 +23,14 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
     public AjoutVehiculeVue(Controleur ctrl) {
         this.ctrl = ctrl;
         initComponents();
-        initCbs();
+        initUI();
         this.setVisible(true);
     }
     
-    public void initCbs()
+    public void initUI()
     {
         jCbTypeVehicule.setModel(new DefaultComboBoxModel(new String[]{"Intervention", "Service", "Transport employés", "Transport passagers"}));
+        hideForIntervention();
         jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
         DefaultComboBoxModel day;
         DefaultComboBoxModel month;
@@ -45,6 +47,71 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jCbAnneeArrVehicule.setModel(year);
         jCbAnneeDebAff.setModel(year);
         jCbAnneeFinAff.setModel(year);
+    }
+    
+    public void resetEnabled()
+    {
+        jCbAnneeDebAff.setEnabled(false);
+        jCbAnneeFinAff.setEnabled(false);
+        jCbDateJourFinAff.setEnabled(false);
+        jCbDateMoisFinAff.setEnabled(false);
+        jCbJourDebAff.setEnabled(false);
+        jCbMoisDebAff.setEnabled(false);
+        jAffectation.setEnabled(false);
+        jNomResponsable.setEnabled(false);
+        jNomDepot.setEnabled(false);
+        jNomService.setEnabled(false);
+        jNomSite.setEnabled(false);
+    }
+    
+    public void hideCheckAction()
+    {
+        if(jAffectation.isSelected())
+        {
+            jCbAnneeDebAff.setEnabled(true);
+            jCbAnneeFinAff.setEnabled(true);
+            jCbDateJourFinAff.setEnabled(true);
+            jCbDateMoisFinAff.setEnabled(true);
+            jCbJourDebAff.setEnabled(true);
+            jCbMoisDebAff.setEnabled(true);
+            jAffectation.setEnabled(true);
+            jNomResponsable.setEnabled(true);
+        }else{
+            resetEnabled();
+            jAffectation.setEnabled(true);
+        }
+    }
+    
+    public void hideForIntervention()
+    {
+        resetEnabled();
+        jNomService.setEnabled(true);
+    }
+    
+    public void hideForService()
+    {
+        resetEnabled();
+        jCbAnneeDebAff.setEnabled(true);
+        jCbAnneeFinAff.setEnabled(true);
+        jCbDateJourFinAff.setEnabled(true);
+        jCbDateMoisFinAff.setEnabled(true);
+        jCbJourDebAff.setEnabled(true);
+        jCbMoisDebAff.setEnabled(true);
+        jAffectation.setEnabled(true);
+        jNomResponsable.setEnabled(true);
+        hideCheckAction();
+    }
+    
+    public void hideForTransportEmploye()
+    {
+        resetEnabled();
+        jNomSite.setEnabled(true);
+    }
+    
+    public void hideForTransportPassager()
+    {
+        resetEnabled();
+        jNomDepot.setEnabled(true);
     }
 
     /**
@@ -128,6 +195,11 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
 
         jAffectation.setSelected(true);
         jAffectation.setText("Est affecté");
+        jAffectation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAffectationActionPerformed(evt);
+            }
+        });
 
         jCbMoisDebAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbMoisDebAff.addActionListener(new java.awt.event.ActionListener() {
@@ -336,6 +408,11 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
 
         jValider.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jValider.setText("Valider");
+        jValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jValiderActionPerformed(evt);
+            }
+        });
 
         jAnnuler.setText("Annuler");
         jAnnuler.addActionListener(new java.awt.event.ActionListener() {
@@ -448,19 +525,46 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         switch((String) jCbTypeVehicule.getSelectedItem())
         {
             case "Intervention":
+                hideForIntervention();
                 jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
                 break;
             case "Service":
+                hideForService();
                 jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
                 break;
             case "Transport employés":
+                hideForTransportEmploye();
                 jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.CAMIONNETTE, Categorie.BUS}));
                 break;
             case "Transport passagers":
+                hideForTransportPassager();
                 jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.CAMIONNETTE, Categorie.BUS}));
                 break;
         }
     }//GEN-LAST:event_jCbTypeVehiculeActionPerformed
+
+    private void jAffectationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAffectationActionPerformed
+        hideCheckAction();
+    }//GEN-LAST:event_jAffectationActionPerformed
+
+    private void jValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValiderActionPerformed
+        switch((String) jCbTypeVehicule.getSelectedItem())
+        {
+            case "Intervention":
+                ctrl.ajouterVehiculeIntervention(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(), jNomService.getText());
+                break;
+            case "Service":
+                ctrl.ajouterVehiculeService();
+                break;
+            case "Transport employés":
+                ctrl.ajouterVehiculeTransportEmploye();
+                break;
+            case "Transport passagers":
+                ctrl.ajouterVehiculeTransportPassager();
+                break;
+        }
+        this.dispose();
+    }//GEN-LAST:event_jValiderActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -503,4 +607,8 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton jValider;
     // End of variables declaration//GEN-END:variables
+
+    public void afficherErreur() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

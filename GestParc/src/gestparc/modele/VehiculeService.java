@@ -8,6 +8,7 @@ package gestparc.modele;
 
 import gestparc.modele.enums.Categorie;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Classe représentant un vehicule de service.
@@ -16,8 +17,8 @@ import java.util.Calendar;
 public class VehiculeService extends Vehicule{
     private boolean affecte; 
     private String nomResponsable; 
-    private Calendar dateDebutAff; 
-    private Calendar dateFinAff;
+    private Date dateDebutAff; 
+    private Date dateFinAff;
 
     /**
      * Constructeur de la classe
@@ -32,7 +33,7 @@ public class VehiculeService extends Vehicule{
      * @param dateDebutAff date de début d'affectation du vehicule
      * @param dateFinAff date de fin d'affectation du vehicule
      */
-    public VehiculeService(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, boolean affecte, String nomResponsable, Calendar dateDebutAff, Calendar dateFinAff) {
+    public VehiculeService(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Date dateArrVehicule, Categorie categorie, boolean affecte, String nomResponsable, Date dateDebutAff, Date dateFinAff) {
         super(immatriculation, kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
         this.affecte = affecte;
         this.nomResponsable = nomResponsable;
@@ -60,7 +61,7 @@ public class VehiculeService extends Vehicule{
      * Getter sur la date de début d'affectation du vehicule
      * @return la dateDebutAff du vehicule
      */
-    public Calendar getDateDebutAff() {
+    public Date getDateDebutAff() {
         return dateDebutAff;
     }
 
@@ -68,7 +69,7 @@ public class VehiculeService extends Vehicule{
      * Getter sur la date de fin d'affectation du vehicule
      * @return la dateFinAff du vehicule
      */
-    public Calendar getDateFinAff() {
+    public Date getDateFinAff() {
         return dateFinAff;
     }
     

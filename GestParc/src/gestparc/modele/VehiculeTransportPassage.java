@@ -7,7 +7,7 @@
 package gestparc.modele;
 
 import gestparc.modele.enums.Categorie;
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Classe représentant un vehicule de transport de passagers.
@@ -26,7 +26,7 @@ public class VehiculeTransportPassage extends Vehicule{
      * @param categorie la catégorie du vehicule
      * @param nomDepot le nom du dépot du vehicule
      */
-    public VehiculeTransportPassage(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, String nomDepot) {
+    public VehiculeTransportPassage(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Date dateArrVehicule, Categorie categorie, String nomDepot) {
         super(immatriculation, kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
         this.nomDepot=nomDepot;
     }

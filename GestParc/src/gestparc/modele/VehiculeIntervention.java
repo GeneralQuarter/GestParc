@@ -1,7 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-import gestparc.modele.Vehicule;
+package gestparc.modele;
+
 import gestparc.modele.enums.Categorie;
-import java.util.Calendar;
+import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,7 +32,7 @@ public class VehiculeIntervention extends Vehicule{
      * @param categorie la catégorie du vehicule
      * @param nomService le nom du service du vehicule
      */
-    public VehiculeIntervention(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie, String nomService) {
+    public VehiculeIntervention(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Date dateArrVehicule, Categorie categorie, String nomService) {
         super(immatriculation, kilometrageMaxAnnuel, kilometrageMaxApresRevision, dureeVieMax, dateArrVehicule, categorie);
         this.nomService = nomService;
     }
