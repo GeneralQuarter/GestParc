@@ -6,17 +6,45 @@
 
 package gestparc.vue;
 
+import gestparc.controleur.Controleur;
+import gestparc.modele.enums.Categorie;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author vpivet
  */
 public class AjoutVehiculeVue extends javax.swing.JFrame {
-
+    private Controleur ctrl;
     /**
      * Creates new form AjoutVehiculeVue
      */
-    public AjoutVehiculeVue() {
+    public AjoutVehiculeVue(Controleur ctrl) {
+        this.ctrl = ctrl;
         initComponents();
+        initCbs();
+        this.setVisible(true);
+    }
+    
+    public void initCbs()
+    {
+        jCbTypeVehicule.setModel(new DefaultComboBoxModel(new String[]{"Intervention", "Service", "Transport employés", "Transport passagers"}));
+        jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
+        DefaultComboBoxModel day;
+        DefaultComboBoxModel month;
+        DefaultComboBoxModel year;
+        day = new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"});
+        month = new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12"});
+        year = new DefaultComboBoxModel(new String[]{"2015","2016","2017","2018"});
+        jCbJourArrVehicule.setModel(day);
+        jCbJourDebAff.setModel(day);
+        jCbDateJourFinAff.setModel(day);
+        jCbDateMoisFinAff.setModel(month);
+        jCbMoisDebAff.setModel(month);
+        jCbMoisArrVehicule.setModel(month);
+        jCbAnneeArrVehicule.setModel(year);
+        jCbAnneeDebAff.setModel(year);
+        jCbAnneeFinAff.setModel(year);
     }
 
     /**
@@ -44,7 +72,7 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jCbJourDebAff = new javax.swing.JComboBox();
         jCbAnneeDebAff = new javax.swing.JComboBox();
-        jCbAnneeMoisFinAff = new javax.swing.JComboBox();
+        jCbAnneeFinAff = new javax.swing.JComboBox();
         jCbDateMoisFinAff = new javax.swing.JComboBox();
         jCbDateJourFinAff = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
@@ -67,7 +95,7 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jValider = new javax.swing.JButton();
         jAnnuler = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Ajouter un nouveau véhicule :");
@@ -80,6 +108,11 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jLabel7.setText("Categorie");
 
         jCbTypeVehicule.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbTypeVehicule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbTypeVehiculeActionPerformed(evt);
+            }
+        });
 
         jCbCategorie.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCbCategorie.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +130,11 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jAffectation.setText("Est affecté");
 
         jCbMoisDebAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbMoisDebAff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbMoisDebAffActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Date début affectation");
 
@@ -104,7 +142,7 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
 
         jCbAnneeDebAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCbAnneeMoisFinAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbAnneeFinAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jCbDateMoisFinAff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -122,33 +160,33 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jNomResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jAffectation)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jAffectation))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jNomResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 298, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCbJourDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCbJourDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCbMoisDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCbMoisDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCbAnneeDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel11))
+                                .addComponent(jCbAnneeDebAff, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCbDateJourFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCbDateJourFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCbDateMoisFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCbDateMoisFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCbAnneeMoisFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12))
-                        .addGap(50, 50, 50))))
+                                .addComponent(jCbAnneeFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +214,7 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCbDateJourFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCbDateMoisFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCbAnneeMoisFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jCbAnneeFinAff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -315,18 +353,6 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jCbTypeVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jCbCategorie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jImmatriculation)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,15 +362,27 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
+                                    .addComponent(jLabel8)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jCbJourArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCbJourArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCbMoisArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jCbMoisArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jCbAnneeArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8))
+                                        .addComponent(jCbAnneeArrVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jCbTypeVehicule, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jCbCategorie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jValider)
@@ -402,47 +440,35 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jAnnulerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AjoutVehiculeVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AjoutVehiculeVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AjoutVehiculeVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AjoutVehiculeVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jCbMoisDebAffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbMoisDebAffActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCbMoisDebAffActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AjoutVehiculeVue().setVisible(true);
-            }
-        });
-    }
+    private void jCbTypeVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbTypeVehiculeActionPerformed
+        switch((String) jCbTypeVehicule.getSelectedItem())
+        {
+            case "Intervention":
+                jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
+                break;
+            case "Service":
+                jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
+                break;
+            case "Transport employés":
+                jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.CAMIONNETTE, Categorie.BUS}));
+                break;
+            case "Transport passagers":
+                jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.CAMIONNETTE, Categorie.BUS}));
+                break;
+        }
+    }//GEN-LAST:event_jCbTypeVehiculeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jAffectation;
     private javax.swing.JButton jAnnuler;
     private javax.swing.JComboBox jCbAnneeArrVehicule;
     private javax.swing.JComboBox jCbAnneeDebAff;
-    private javax.swing.JComboBox jCbAnneeMoisFinAff;
+    private javax.swing.JComboBox jCbAnneeFinAff;
     private javax.swing.JComboBox jCbCategorie;
     private javax.swing.JComboBox jCbDateJourFinAff;
     private javax.swing.JComboBox jCbDateMoisFinAff;

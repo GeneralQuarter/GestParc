@@ -48,4 +48,8 @@ public class Parc {
             System.out.println("Le vehicule n'existe pas dans le parc.");
         }
     }
+    
+    public List<Vehicule> getVehicules(){
+        return vehicules;
+    }
 }

@@ -7,6 +7,7 @@
 package gestparc.controleur;
 
 import gestparc.modele.Parc;
+import gestparc.vue.AjoutVehiculeVue;
 import gestparc.vue.TableauBord;
 
 /**
@@ -14,6 +15,7 @@ import gestparc.vue.TableauBord;
  * @author qgangler
  */
 public class Controleur {
+    private AjoutVehiculeVue avv;
     private TableauBord tb;
     private Parc p;
     
@@ -31,6 +33,14 @@ public class Controleur {
     {
         this.tb = tb;
         this.p = new Parc();
+    }
+    
+    public void afficherAjouterVehicule()
+    {
+        if(avv == null)
+            avv = new AjoutVehiculeVue(this);
+        if(avv != null && !avv.isVisible())
+            avv = new AjoutVehiculeVue(this);
     }
     
     public void ajouterVehiculeIntervention()

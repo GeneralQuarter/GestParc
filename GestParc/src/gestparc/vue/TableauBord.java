@@ -7,8 +7,13 @@
 package gestparc.vue;
 
 import gestparc.controleur.Controleur;
+import gestparc.modele.CellRendererListeVehicule;
+import gestparc.modele.ModeleListeVehicule;
+import gestparc.modele.Vehicule;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -29,6 +34,16 @@ public class TableauBord extends javax.swing.JFrame {
             Logger.getLogger(TableauBord.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
+        jListVehicule.setModel(new DefaultComboBoxModel());
+        jListIntervention.setModel(new DefaultComboBoxModel());
+        this.setVisible(true);
+    }
+    
+    public void updateListVehicule(List<Vehicule> vehicules)
+    {
+        jListVehicule.setModel(new ModeleListeVehicule(vehicules));
+        jListVehicule.setCellRenderer(new CellRendererListeVehicule(vehicules));
+        jListVehicule.validate();
     }
 
     /**
@@ -139,7 +154,7 @@ public class TableauBord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jAjouterVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterVehiculeActionPerformed
-        // TODO add your handling code here:
+        ctrl.afficherAjouterVehicule();
     }//GEN-LAST:event_jAjouterVehiculeActionPerformed
 
     private void jAjouterInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterInterventionActionPerformed
