@@ -28,6 +28,7 @@ public abstract class Vehicule {
     private Couleur couleur;
     private Categorie categorie;
     private List<Intervention> interventions;
+    private boolean immobilise;
 
     public Vehicule(String immatriculation, int kilometrageMaxAnnuel, int kilometrageMaxApresRevision, int dureeVieMax, Calendar dateArrVehicule, Categorie categorie) {
         this.immatriculation = immatriculation;
@@ -41,6 +42,7 @@ public abstract class Vehicule {
         this.couleur = Couleur.VERT;
         this.categorie = categorie;
         this.interventions = new ArrayList<>();
+        this.immobilise = false;
     }
     
     public void ajouterIntervention(Intervention intervention)
