@@ -29,7 +29,16 @@ public class ModeleListeVehicule extends AbstractListModel{
     @Override
     public Object getElementAt(int index) {
         Vehicule v = vehicules.get(index);
-        return v.getImmatriculation() + " " + v.getCategorie().toString() + " " + v.getKilometrageAnnuel() + " km " + v.getTempsCirculation() + " jours ";
+        String typeVehicule = null;
+        if(v instanceof VehiculeIntervention)
+            typeVehicule = "Véhicule d'intervention";
+        if(v instanceof VehiculeService)
+            typeVehicule = "Véhicule de service";
+        if(v instanceof VehiculeTransportEmploye)
+            typeVehicule = "Véhicule de transport employé";
+        if(v instanceof VehiculeTransportPassage)
+            typeVehicule = "Véhicule de transport passager";
+        return typeVehicule + " " + v.getImmatriculation() + " " + v.getCategorie().toString() + " " + v.getKilometrageAnnuel() + " km annuel " + v.getKilometrageAnnuel() + " km après révision " +v.getTempsCirculation() + " jours ";
     }
     
 }

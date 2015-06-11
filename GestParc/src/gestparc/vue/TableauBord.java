@@ -42,9 +42,12 @@ public class TableauBord extends javax.swing.JFrame {
     
     public void updateListVehicule(List<Vehicule> vehicules)
     {
+        int sel = jListVehicule.getSelectedIndex();
         jListVehicule.setModel(new ModeleListeVehicule(vehicules));
         jListVehicule.setCellRenderer(new CellRendererListeVehicule(vehicules));
         jListVehicule.validate();
+        jListVehicule.setSelectedIndex(sel);
+        jListVehiculeMouseClicked(null);
     }
 
     /**
@@ -116,7 +119,7 @@ public class TableauBord extends javax.swing.JFrame {
             }
         });
 
-        jBoutonAjoutKilometre.setText("Bouton de test : Ajouter 1000 km");
+        jBoutonAjoutKilometre.setText("Bouton de test : Ajouter 500 km");
         jBoutonAjoutKilometre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBoutonAjoutKilometreActionPerformed(evt);
@@ -143,7 +146,7 @@ public class TableauBord extends javax.swing.JFrame {
                         .addComponent(jBoutonAjoutKilometre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBoutonAjoutAnnee)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                         .addComponent(jAjouterIntervention)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jAjouterVehicule))
@@ -193,7 +196,7 @@ public class TableauBord extends javax.swing.JFrame {
      * @param evt l'évènement
      */
     private void jAjouterInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterInterventionActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jAjouterInterventionActionPerformed
 
     /**
@@ -212,7 +215,7 @@ public class TableauBord extends javax.swing.JFrame {
      * @param evt l'évènement
      */
     private void jBoutonAjoutAnneeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoutonAjoutAnneeActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBoutonAjoutAnneeActionPerformed
 
     /**
@@ -220,7 +223,7 @@ public class TableauBord extends javax.swing.JFrame {
      * @param evt l'évènement
      */
     private void jBoutonAjoutKilometreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoutonAjoutKilometreActionPerformed
-        // TODO add your handling code here:
+        ctrl.ajouterMilleKm(jListVehicule.getSelectedIndex());
     }//GEN-LAST:event_jBoutonAjoutKilometreActionPerformed
 
 

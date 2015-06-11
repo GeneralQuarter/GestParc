@@ -192,4 +192,10 @@ public class Controleur {
     {
         return p.getVehicules();
     }
+    
+    public void ajouterMilleKm(int indexVehicule)
+    {
+        p.ajouterMilleKmAnnuel(indexVehicule);
+        tb.updateListVehicule(p.getVehicules());
+    }
 }

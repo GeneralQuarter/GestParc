@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import javafx.scene.paint.Color;
 
 /**
  * Classe représentant un vehicule
@@ -180,5 +181,25 @@ public abstract class Vehicule {
                "\nKilometrage apres revision actuel  : " + kilometrageApresRevision +
                "\nTemps de circulation : " + tempsCirculation +
                "\nImobilisé : " + immobilise;
+    }
+    
+    public void ajouterMilleKmAnnuel()
+    {
+        kilometrageAnnuel+=500;
+        kilometrageApresRevision+=500;
+        updateCouleur();
+    }
+    
+    public void updateCouleur()
+    {
+        if(kilometrageAnnuel < kilometrageMaxAnnuel/2 && kilometrageApresRevision < kilometrageMaxApresRevision/2)
+        {
+            couleur = Couleur.VERT;
+        }else if((kilometrageAnnuel >= kilometrageMaxAnnuel/2 && kilometrageAnnuel < kilometrageMaxAnnuel*(3/4)) || (kilometrageApresRevision >= kilometrageMaxApresRevision/2 && kilometrageApresRevision < kilometrageMaxApresRevision*(3/4)))
+        {
+            couleur = Couleur.ORANGE;
+        }else{
+            couleur = Couleur.ROUGE;
+        }
     }
 }

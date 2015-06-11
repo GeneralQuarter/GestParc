@@ -35,7 +35,7 @@
                       <Component id="jBoutonAjoutKilometre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBoutonAjoutAnnee" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="162" max="32767" attributes="0"/>
+                      <EmptySpace pref="168" max="32767" attributes="0"/>
                       <Component id="jAjouterIntervention" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jAjouterVehicule" min="-2" max="-2" attributes="0"/>
@@ -170,7 +170,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBoutonAjoutKilometre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bouton de test : Ajouter 1000 km"/>
+        <Property name="text" type="java.lang.String" value="Bouton de test : Ajouter 500 km"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBoutonAjoutKilometreActionPerformed"/>

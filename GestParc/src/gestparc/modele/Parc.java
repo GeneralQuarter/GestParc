@@ -56,4 +56,11 @@ public class Parc {
     public List<Vehicule> getVehicules(){
         return vehicules;
     }
+    
+    public void ajouterMilleKmAnnuel(int indexVehicule)
+    {
+        Vehicule v = vehicules.get(indexVehicule);
+        v.ajouterMilleKmAnnuel();
+        //vehicules.add(indexVehicule, v);
+    }
 }
