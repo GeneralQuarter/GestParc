@@ -45,4 +45,10 @@ public class VehiculeIntervention extends Vehicule{
         return nomService;
     }
     
+    @Override
+    public String toString()
+    {
+        return super.toString() +
+                "\nNom du service : " + nomService;
+    }
 }

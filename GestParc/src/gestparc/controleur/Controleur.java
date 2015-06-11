@@ -7,6 +7,7 @@
 package gestparc.controleur;
 
 import gestparc.modele.Parc;
+import gestparc.modele.Vehicule;
 import gestparc.modele.VehiculeIntervention;
 import gestparc.modele.enums.Categorie;
 import gestparc.vue.AjoutVehiculeVue;
@@ -14,6 +15,7 @@ import gestparc.vue.TableauBord;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Controleur de l'application
@@ -89,5 +91,10 @@ public class Controleur {
     public void ajouterIntervention()
     {
         
+    }
+    
+    public List<Vehicule> getVehicules()
+    {
+        return p.getVehicules();
     }
 }

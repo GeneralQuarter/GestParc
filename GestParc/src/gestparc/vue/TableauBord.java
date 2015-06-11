@@ -82,6 +82,11 @@ public class TableauBord extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jListVehicule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListVehiculeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jListVehicule);
 
         jDetailVehicule.setColumns(20);
@@ -161,6 +166,13 @@ public class TableauBord extends javax.swing.JFrame {
     private void jAjouterInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterInterventionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jAjouterInterventionActionPerformed
+
+    private void jListVehiculeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListVehiculeMouseClicked
+        if(jListVehicule.getSelectedIndex() != -1)
+        {
+            jDetailVehicule.setText(ctrl.getVehicules().get(jListVehicule.getSelectedIndex()).toString());
+        }
+    }//GEN-LAST:event_jListVehiculeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

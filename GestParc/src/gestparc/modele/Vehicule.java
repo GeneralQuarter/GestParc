@@ -8,10 +8,11 @@ package gestparc.modele;
 
 import gestparc.modele.enums.Categorie;
 import gestparc.modele.enums.Couleur;
+import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Classe représentant un vehicule
@@ -165,4 +166,19 @@ public abstract class Vehicule {
         return categorie;
     }
     
+    @Override
+    public String toString()
+    {
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+        return "Categorie : " + categorie +
+               "\nImmatriculation : " + immatriculation +
+               "\nDate d'arrivée : " + df.format(dateArrVehicule) +
+               "\nKilometrage maximum annuel : " + kilometrageMaxAnnuel +
+               "\nKilometrage maximum après revision : " + kilometrageMaxApresRevision +
+               "\nDurée de vie maximum : " + dureeVieMax +
+               "\nKilometrage annuel actuel : " + kilometrageAnnuel +
+               "\nKilometrage apres revision actuel  : " + kilometrageApresRevision +
+               "\nTemps de circulation : " + tempsCirculation +
+               "\nImobilisé : " + immobilise;
+    }
 }
