@@ -39,4 +39,11 @@ public class VehiculeTransportEmploye extends Vehicule{
         return nomSite;
     }
     
+    @Override
+    public String toString()
+    {
+        return super.toString() +
+                "\nNom du site : " + nomSite; 
+    }
+    
 }

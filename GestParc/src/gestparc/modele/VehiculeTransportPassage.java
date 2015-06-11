@@ -39,4 +39,11 @@ public class VehiculeTransportPassage extends Vehicule{
         return nomDepot;
     }
     
+    @Override
+    public String toString()
+    {
+        return super.toString() +
+                "\nNom depot : " + nomDepot;
+    }
+    
 }

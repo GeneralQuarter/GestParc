@@ -29,7 +29,7 @@ public class ModeleListeVehicule extends AbstractListModel{
     @Override
     public Object getElementAt(int index) {
         Vehicule v = vehicules.get(index);
-        return v.getImmatriculation() + " " + v.getCategorie().toString() + " " + v.getKilometrageAnnuel() + "km " + v.getTempsCirculation() + " jours ";
+        return v.getImmatriculation() + " " + v.getCategorie().toString() + " " + v.getKilometrageAnnuel() + " km " + v.getTempsCirculation() + " jours ";
     }
     
 }

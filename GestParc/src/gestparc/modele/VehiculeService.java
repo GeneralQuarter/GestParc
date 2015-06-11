@@ -7,8 +7,10 @@
 package gestparc.modele;
 
 import gestparc.modele.enums.Categorie;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Classe représentant un vehicule de service.
@@ -39,6 +41,7 @@ public class VehiculeService extends Vehicule{
         this.nomResponsable = nomResponsable;
         this.dateDebutAff = dateDebutAff;
         this.dateFinAff = dateFinAff;
+        
     }
     
     /**
@@ -73,5 +76,21 @@ public class VehiculeService extends Vehicule{
         return dateFinAff;
     }
     
+    @Override
+    public String toString()
+    {
+        String res = super.toString();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+        if(!affecte)
+        {
+            res+= "\nAffecté : " + affecte;
+        }else{
+            res+= "\nAffecté : " + affecte +
+                "\nNom responsable : " + nomResponsable +
+                "\nDate début d'affectation : " + df.format(dateDebutAff) +
+                "\nDate fin d'affectation : " + df.format(dateFinAff);
+        }
+        return res;        
+    }
     
 }

@@ -13,7 +13,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 /**
- * Class de modification de la couleur des cellules dans la liste de vehicule
+ * Classe de modification de la couleur des cellules dans la liste de vehicule
  * @author qgangler
  */
 public class CellRendererListeVehicule extends JLabel implements ListCellRenderer<Object>{
@@ -29,7 +29,7 @@ public class CellRendererListeVehicule extends JLabel implements ListCellRendere
         String s = value.toString();
         setText(s);
         if (isSelected) {
-            setBackground(list.getSelectionBackground());
+            setBackground(vehicules.get(index).getCouleur().getColor().darker());
             setForeground(list.getSelectionForeground());
         } else {
             setBackground(vehicules.get(index).getCouleur().getColor());

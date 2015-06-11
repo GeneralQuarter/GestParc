@@ -32,21 +32,15 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         jCbTypeVehicule.setModel(new DefaultComboBoxModel(new String[]{"Intervention", "Service", "Transport employés", "Transport passagers"}));
         hideForIntervention();
         jCbCategorie.setModel(new DefaultComboBoxModel(new Categorie[]{Categorie.VOITURE, Categorie.UTILITAIRE}));
-        DefaultComboBoxModel day;
-        DefaultComboBoxModel month;
-        DefaultComboBoxModel year;
-        day = new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"});
-        month = new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12"});
-        year = new DefaultComboBoxModel(new String[]{"2015","2016","2017","2018"});
-        jCbJourArrVehicule.setModel(day);
-        jCbJourDebAff.setModel(day);
-        jCbDateJourFinAff.setModel(day);
-        jCbDateMoisFinAff.setModel(month);
-        jCbMoisDebAff.setModel(month);
-        jCbMoisArrVehicule.setModel(month);
-        jCbAnneeArrVehicule.setModel(year);
-        jCbAnneeDebAff.setModel(year);
-        jCbAnneeFinAff.setModel(year);
+        jCbJourArrVehicule.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"}));
+        jCbJourDebAff.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"}));
+        jCbDateJourFinAff.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"}));
+        jCbDateMoisFinAff.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12"}));
+        jCbMoisDebAff.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12"}));
+        jCbMoisArrVehicule.setModel(new DefaultComboBoxModel(new String[]{"01","02","03","04","05","06","07","08","09","10","11","12"}));
+        jCbAnneeArrVehicule.setModel(new DefaultComboBoxModel(new String[]{"2015","2016","2017","2018"}));
+        jCbAnneeDebAff.setModel(new DefaultComboBoxModel(new String[]{"2015","2016","2017","2018"}));
+        jCbAnneeFinAff.setModel(new DefaultComboBoxModel(new String[]{"2015","2016","2017","2018"}));
     }
     
     public void resetEnabled()
@@ -551,16 +545,21 @@ public class AjoutVehiculeVue extends javax.swing.JFrame {
         switch((String) jCbTypeVehicule.getSelectedItem())
         {
             case "Intervention":
-                ctrl.ajouterVehiculeIntervention(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(), jNomService.getText());
+                ctrl.ajouterVehiculeIntervention(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbAnneeArrVehicule.getSelectedItem(), jNomService.getText());
                 break;
             case "Service":
-                ctrl.ajouterVehiculeService();
+                if(jAffectation.isSelected())
+                    ctrl.ajouterVehiculeService(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbAnneeArrVehicule.getSelectedItem(),
+                            (String) jCbJourDebAff.getSelectedItem(),(String) jCbMoisDebAff.getSelectedItem(),(String) jCbAnneeDebAff.getSelectedItem(),
+                            (String) jCbDateJourFinAff.getSelectedItem(),(String) jCbDateMoisFinAff.getSelectedItem(),(String) jCbAnneeFinAff.getSelectedItem(), jNomResponsable.getText());
+                else
+                    ctrl.ajouterVehiculeService(jImmatriculation.getText(), (Categorie) jCbCategorie.getSelectedItem(), (String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbAnneeArrVehicule.getSelectedItem());
                 break;
             case "Transport employés":
-                ctrl.ajouterVehiculeTransportEmploye();
+                ctrl.ajouterVehiculeTransportEmploye(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbAnneeArrVehicule.getSelectedItem(), jNomSite.getText());
                 break;
             case "Transport passagers":
-                ctrl.ajouterVehiculeTransportPassager();
+                ctrl.ajouterVehiculeTransportPassager(jImmatriculation.getText(),(Categorie) jCbCategorie.getSelectedItem(),(String) jCbJourArrVehicule.getSelectedItem(),(String) jCbMoisArrVehicule.getSelectedItem(),(String) jCbAnneeArrVehicule.getSelectedItem(), jNomDepot.getText());
                 break;
         }
         this.dispose();
