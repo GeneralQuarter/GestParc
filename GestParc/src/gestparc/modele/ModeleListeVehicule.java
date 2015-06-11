@@ -10,7 +10,7 @@ import java.util.List;
 import javax.swing.AbstractListModel;
 
 /**
- *
+ * Classe de modèle de la liste de vehicule
  * @author qgangler
  */
 public class ModeleListeVehicule extends AbstractListModel{

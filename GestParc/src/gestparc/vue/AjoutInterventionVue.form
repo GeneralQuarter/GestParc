@@ -42,11 +42,11 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jCbDateJour" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jCbDateJour" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCbDateMois" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jCbDateMois" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jCbDateAnnee" min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="jCbDateAnnee" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -184,7 +184,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Date d&#xe9;but affectation"/>
+        <Property name="text" type="java.lang.String" value="Date de l&apos;intervention"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jAnnuler">

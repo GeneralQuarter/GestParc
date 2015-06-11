@@ -49,6 +49,10 @@ public class Parc {
         }
     }
     
+    /**
+     * Getter sur la liste de véhicules du parc
+     * @return La liste vehicules
+     */
     public List<Vehicule> getVehicules(){
         return vehicules;
     }

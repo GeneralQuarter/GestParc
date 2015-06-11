@@ -32,7 +32,10 @@
                   <Component id="jScrollPane3" max="32767" attributes="0"/>
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="540" max="32767" attributes="0"/>
+                      <Component id="jBoutonAjoutKilometre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBoutonAjoutAnnee" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="162" max="32767" attributes="0"/>
                       <Component id="jAjouterIntervention" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jAjouterVehicule" min="-2" max="-2" attributes="0"/>
@@ -67,6 +70,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jAjouterVehicule" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jAjouterIntervention" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBoutonAjoutKilometre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBoutonAjoutAnnee" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -161,6 +166,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAjouterInterventionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBoutonAjoutKilometre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bouton de test : Ajouter 1000 km"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBoutonAjoutKilometreActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jBoutonAjoutAnnee">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bouton de test : Ajouter 1 ans"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBoutonAjoutAnneeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

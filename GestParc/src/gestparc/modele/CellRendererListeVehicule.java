@@ -13,7 +13,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 /**
- *
+ * Class de modification de la couleur des cellules dans la liste de vehicule
  * @author qgangler
  */
 public class CellRendererListeVehicule extends JLabel implements ListCellRenderer<Object>{

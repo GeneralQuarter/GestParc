@@ -66,6 +66,8 @@ public class TableauBord extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jAjouterIntervention = new javax.swing.JButton();
+        jBoutonAjoutKilometre = new javax.swing.JButton();
+        jBoutonAjoutAnnee = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -114,6 +116,20 @@ public class TableauBord extends javax.swing.JFrame {
             }
         });
 
+        jBoutonAjoutKilometre.setText("Bouton de test : Ajouter 1000 km");
+        jBoutonAjoutKilometre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBoutonAjoutKilometreActionPerformed(evt);
+            }
+        });
+
+        jBoutonAjoutAnnee.setText("Bouton de test : Ajouter 1 ans");
+        jBoutonAjoutAnnee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBoutonAjoutAnneeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,7 +140,10 @@ public class TableauBord extends javax.swing.JFrame {
                     .addComponent(jScrollPane3)
                     .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 540, Short.MAX_VALUE)
+                        .addComponent(jBoutonAjoutKilometre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBoutonAjoutAnnee)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                         .addComponent(jAjouterIntervention)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jAjouterVehicule))
@@ -152,21 +171,35 @@ public class TableauBord extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAjouterVehicule)
-                    .addComponent(jAjouterIntervention))
+                    .addComponent(jAjouterIntervention)
+                    .addComponent(jBoutonAjoutKilometre)
+                    .addComponent(jBoutonAjoutAnnee))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Méthode permettant de déclencher l'ajout d'un véhicule lors de l'utilisation du bouton.
+     * @param evt l'évènement
+     */
     private void jAjouterVehiculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterVehiculeActionPerformed
         ctrl.afficherAjouterVehicule();
     }//GEN-LAST:event_jAjouterVehiculeActionPerformed
 
+    /**
+     * Méthode permettant de déclencher l'ajout d'une intervention à un véhicule lors de l'utilisation du bouton.
+     * @param evt l'évènement
+     */
     private void jAjouterInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterInterventionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jAjouterInterventionActionPerformed
 
+    /**
+     * Méthode permettant de prendre en compte le vehicule séléctionner par l'utilisateur avec la sourie
+     * @param evt l'évènement
+     */
     private void jListVehiculeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListVehiculeMouseClicked
         if(jListVehicule.getSelectedIndex() != -1)
         {
@@ -174,10 +207,28 @@ public class TableauBord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListVehiculeMouseClicked
 
+    /**
+     * Méthode permettant de déclencher l'ajout d'une année de circulation au véhicule séléctionné lors de l'utilisation du bouton.
+     * @param evt l'évènement
+     */
+    private void jBoutonAjoutAnneeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoutonAjoutAnneeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBoutonAjoutAnneeActionPerformed
+
+    /**
+     * Méthode permettant de déclencher l'ajout d'une centaine de kilomètres effectués au véhicule séléctionné lors de l'utilisation du bouton.
+     * @param evt l'évènement
+     */
+    private void jBoutonAjoutKilometreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoutonAjoutKilometreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBoutonAjoutKilometreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAjouterIntervention;
     private javax.swing.JButton jAjouterVehicule;
+    private javax.swing.JButton jBoutonAjoutAnnee;
+    private javax.swing.JButton jBoutonAjoutKilometre;
     private javax.swing.JTextArea jDetailVehicule;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

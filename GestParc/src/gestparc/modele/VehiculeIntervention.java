@@ -45,6 +45,10 @@ public class VehiculeIntervention extends Vehicule{
         return nomService;
     }
     
+    /**
+     * Modification de la méthode par défaut pour renvoyer un message spécifique.
+     * @return Le message
+     */
     @Override
     public String toString()
     {
