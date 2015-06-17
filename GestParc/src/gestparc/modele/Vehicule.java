@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
 
 /**
  * Classe représentant un vehicule
@@ -81,7 +81,7 @@ public abstract class Vehicule {
     {
         if(interventions.contains(intervention))
         {
-            interventions.add(intervention);
+            interventions.remove(intervention);
         }else{
             System.out.println("Cette intervention n'est pas attribuée à ce vehicule !");
         }
@@ -201,5 +201,11 @@ public abstract class Vehicule {
         }else{
             couleur = Couleur.ROUGE;
         }
+    }
+    
+    public Intervention getIntervention(int i){
+        if(i <= interventions.size()-1)
+            return interventions.get(i);
+        return null;
     }
 }
