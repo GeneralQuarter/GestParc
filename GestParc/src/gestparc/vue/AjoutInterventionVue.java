@@ -6,18 +6,42 @@
 
 package gestparc.vue;
 
+import gestparc.controleur.Controleur;
+import gestparc.modele.InterventionCarrosserie;
+import gestparc.modele.InterventionMecanique;
+import gestparc.modele.Vehicule;
+import gestparc.modele.enums.PieceCarrosserie;
+import gestparc.modele.enums.PieceMecanique;
+import gestparc.modele.enums.TypeCarrosserie;
+import gestparc.modele.enums.TypeMecanique;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  * Fenêtre d'ajout d'une nouvelle intervention à un véhicule.
  * @author vpivet
  */
 public class AjoutInterventionVue extends javax.swing.JFrame {
-
+    private Controleur ctrl;
+    private Vehicule v;
     /**
      * Creates new form AjoutInterventionVue
+     * @param ctrl
      */
-    public AjoutInterventionVue() {
+    public AjoutInterventionVue(Vehicule v, Controleur ctrl) {
+        this.ctrl = ctrl;
+        this.v = v;
         initComponents();
+        initGUI();
+        this.setVisible(true);
     }
+    
+    private void initGUI()
+    {
+        jCbTypeIntervention.setModel(new DefaultComboBoxModel(new String[]{"Mécanique", "Carrosserie"}));
+        jCbPiece.setModel(new DefaultComboBoxModel(PieceMecanique.values()));
+        jCbNatureIntervention.setModel(new DefaultComboBoxModel(TypeMecanique.values()));
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,12 +57,10 @@ public class AjoutInterventionVue extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jCbTypeIntervention = new javax.swing.JComboBox();
         jCbPiece = new javax.swing.JComboBox();
-        jCbDateAnnee = new javax.swing.JComboBox();
-        jCbDateMois = new javax.swing.JComboBox();
-        jCbDateJour = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
         jAnnuler = new javax.swing.JButton();
         jValider = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jCbNatureIntervention = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -53,22 +75,33 @@ public class AjoutInterventionVue extends javax.swing.JFrame {
         jLabel4.setText("Piece recquise :");
 
         jCbTypeIntervention.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCbTypeIntervention.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbTypeInterventionActionPerformed(evt);
+            }
+        });
 
         jCbPiece.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jCbDateAnnee.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jCbDateMois.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jCbDateJour.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel11.setText("Date de l'intervention");
-
         jAnnuler.setText("Annuler");
+        jAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAnnulerActionPerformed(evt);
+            }
+        });
 
         jValider.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jValider.setText("Valider");
+        jValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jValiderActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Nature de l'intervention :");
+
+        jCbNatureIntervention.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,28 +110,27 @@ public class AjoutInterventionVue extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jCbTypeIntervention, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jCbPiece, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCbDateJour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jCbNatureIntervention, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jCbTypeIntervention, 0, 150, Short.MAX_VALUE)))
+                                .addGap(77, 77, 77)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jCbPiece, 0, 232, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jValider)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCbDateMois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCbDateAnnee, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11))
-                .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jValider)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jAnnuler)
+                        .addComponent(jAnnuler)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,22 +138,21 @@ public class AjoutInterventionVue extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCbTypeIntervention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbPiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCbDateJour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbDateMois, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCbDateAnnee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jCbTypeIntervention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCbPiece, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCbNatureIntervention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAnnuler)
                     .addComponent(jValider))
@@ -131,50 +162,46 @@ public class AjoutInterventionVue extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AjoutInterventionVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AjoutInterventionVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AjoutInterventionVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AjoutInterventionVue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void jCbTypeInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbTypeInterventionActionPerformed
+        switch(jCbTypeIntervention.getSelectedItem().toString())
+        {
+            case "Mécanique":
+                jCbPiece.setModel(new DefaultComboBoxModel(PieceMecanique.values()));
+                jCbNatureIntervention.setModel(new DefaultComboBoxModel(TypeMecanique.values()));
+                break;
+            case "Carrosserie":
+                jCbPiece.setModel(new DefaultComboBoxModel(PieceCarrosserie.values()));
+                jCbNatureIntervention.setModel(new DefaultComboBoxModel(TypeCarrosserie.values()));
+                break;
         }
-        //</editor-fold>
+    }//GEN-LAST:event_jCbTypeInterventionActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AjoutInterventionVue().setVisible(true);
-            }
-        });
-    }
+    private void jAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAnnulerActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jAnnulerActionPerformed
+
+    private void jValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jValiderActionPerformed
+        switch(jCbTypeIntervention.getSelectedItem().toString())
+        {
+            case "Mécanique":
+                v.ajouterIntervention(new InterventionMecanique((TypeMecanique) jCbNatureIntervention.getSelectedItem(),(PieceMecanique) jCbPiece.getSelectedItem()));
+                this.dispose();
+                break;
+            case "Carrosserie":
+                v.ajouterIntervention(new InterventionCarrosserie((TypeCarrosserie) jCbNatureIntervention.getSelectedItem(),(PieceCarrosserie) jCbPiece.getSelectedItem()));
+                this.dispose();
+                break;
+        }
+    }//GEN-LAST:event_jValiderActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAnnuler;
-    private javax.swing.JComboBox jCbDateAnnee;
-    private javax.swing.JComboBox jCbDateJour;
-    private javax.swing.JComboBox jCbDateMois;
+    private javax.swing.JComboBox jCbNatureIntervention;
     private javax.swing.JComboBox jCbPiece;
     private javax.swing.JComboBox jCbTypeIntervention;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jValider;

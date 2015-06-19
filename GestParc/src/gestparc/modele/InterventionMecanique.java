@@ -9,6 +9,7 @@ package gestparc.modele;
 import gestparc.modele.enums.PieceMecanique;
 import gestparc.modele.enums.TypeMecanique;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Classe qui représente une intervention mécanique sur un vehicule
@@ -17,7 +18,7 @@ import java.util.Calendar;
 public class InterventionMecanique implements Intervention{
     private TypeMecanique typeIntervention;
     private PieceMecanique piece;
-    private final Calendar dateIntervention;
+    private final Date dateIntervention;
     
     /**
      * Getter du type d'intervention mécanique
@@ -43,6 +44,16 @@ public class InterventionMecanique implements Intervention{
     public InterventionMecanique(TypeMecanique typeIntervention, PieceMecanique piece) {
         this.typeIntervention = typeIntervention;
         this.piece = piece;
-        this.dateIntervention = Calendar.getInstance();
+        this.dateIntervention = Calendar.getInstance().getTime();
+    }
+
+    public Date getDateIntervention() {
+        return dateIntervention;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return typeIntervention + " sur " + piece + " le " + dateIntervention.toString();
     }
 }

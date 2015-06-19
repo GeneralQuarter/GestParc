@@ -208,4 +208,14 @@ public abstract class Vehicule {
             return interventions.get(i);
         return null;
     }
+    
+    public List<Intervention> getInterventions()
+    {
+        return interventions;
+    }
+    
+    public String getDescription()
+    {
+        return categorie + " " + immatriculation + " " + kilometrageAnnuel + " km annuel " + kilometrageApresRevision + " km apès revision " + tempsCirculation + " j de crculation"; 
+    }
 }

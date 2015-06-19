@@ -10,8 +10,6 @@ import gestparc.modele.enums.Categorie;
 import gestparc.modele.enums.Couleur;
 import gestparc.modele.enums.PieceMecanique;
 import gestparc.modele.enums.TypeMecanique;
-import java.awt.Color;
-import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;

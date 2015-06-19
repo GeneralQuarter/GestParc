@@ -16,23 +16,17 @@ import javax.swing.ListCellRenderer;
  * Classe de modification de la couleur des cellules dans la liste de vehicule
  * @author qgangler
  */
-public class CellRendererListeVehicule extends JLabel implements ListCellRenderer<Object>{
-    private List<Vehicule> vehicules;
-    
-    public CellRendererListeVehicule(List<Vehicule> vehicules)
-    {
-        this.vehicules = vehicules;
-    }
+public class CellRendererListeVehicule extends JLabel implements ListCellRenderer<Vehicule>{
     
     @Override
-    public Component getListCellRendererComponent(JList<? extends Object> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        String s = value.toString();
+    public Component getListCellRendererComponent(JList<? extends Vehicule> list, Vehicule value, int index, boolean isSelected, boolean cellHasFocus) {
+        String s = value.getDescription();
         setText(s);
         if (isSelected) {
-            setBackground(vehicules.get(index).getCouleur().getColor().darker());
+            setBackground(value.getCouleur().getColor().darker());
             setForeground(list.getSelectionForeground());
         } else {
-            setBackground(vehicules.get(index).getCouleur().getColor());
+            setBackground(value.getCouleur().getColor());
             setForeground(list.getForeground());
         }
         setEnabled(list.isEnabled());

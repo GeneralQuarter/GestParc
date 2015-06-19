@@ -13,6 +13,7 @@ import gestparc.modele.VehiculeService;
 import gestparc.modele.VehiculeTransportEmploye;
 import gestparc.modele.VehiculeTransportPassage;
 import gestparc.modele.enums.Categorie;
+import gestparc.vue.AjoutInterventionVue;
 import gestparc.vue.AjoutVehiculeVue;
 import gestparc.vue.TableauBord;
 import java.text.ParseException;
@@ -26,6 +27,7 @@ import java.util.List;
  */
 public class Controleur {
     private AjoutVehiculeVue avv;
+    private AjoutInterventionVue aiv;
     private TableauBord tb;
     private Parc p;
     
@@ -53,6 +55,17 @@ public class Controleur {
         if(avv != null && !avv.isVisible())
             avv = new AjoutVehiculeVue(this);
     }
+    public void afficherAjoutInterventionVue()
+    {
+        if(tb.getSelectedItem() != null)
+        {
+            if(aiv == null)
+                aiv = new AjoutInterventionVue(tb.getSelectedItem(), this);
+            if(aiv != null && !aiv.isVisible())
+                aiv = new AjoutInterventionVue(tb.getSelectedItem(), this);
+        }
+    }
+    
     
     public void ajouterVehiculeIntervention(String immatriculation, Categorie categorie, String dayArr, String monthArr, String yearArr, String nomService)
     {

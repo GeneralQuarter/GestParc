@@ -8,9 +8,8 @@ package gestparc.modele;
 
 import gestparc.modele.enums.PieceCarrosserie;
 import gestparc.modele.enums.TypeCarrosserie;
-import gestparc.modele.enums.PieceCarrosserie;
-import gestparc.modele.enums.TypeCarrosserie;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Objet qui représente une intervention sur la carrosserie d'un vehicule
@@ -19,7 +18,7 @@ import java.util.Calendar;
 public class InterventionCarrosserie implements Intervention {
     private TypeCarrosserie typeIntervention;
     private PieceCarrosserie piece;
-    private final Calendar dateIntervention;
+    private final Date dateIntervention;
     
     /**
      * Constructeur de la classe
@@ -31,7 +30,11 @@ public class InterventionCarrosserie implements Intervention {
     public InterventionCarrosserie(TypeCarrosserie typeIntervention, PieceCarrosserie piece) {
         this.typeIntervention = typeIntervention;
         this.piece = piece;
-        dateIntervention = Calendar.getInstance();
+        dateIntervention = Calendar.getInstance().getTime();
+    }
+
+    public Date getDateIntervention() {
+        return dateIntervention;
     }
     
     /**
@@ -48,6 +51,12 @@ public class InterventionCarrosserie implements Intervention {
      */
     public PieceCarrosserie getPiece() {
         return piece;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return typeIntervention + " sur " + piece + " le " + dateIntervention.toString();
     }
     
 }

@@ -13,7 +13,7 @@ import javax.swing.AbstractListModel;
  * Classe de modèle de la liste de vehicule
  * @author qgangler
  */
-public class ModeleListeVehicule extends AbstractListModel{
+public class ModeleListeVehicule extends AbstractListModel<Vehicule>{
     private List<Vehicule> vehicules;
     
     public ModeleListeVehicule(List<Vehicule> vehicules)
@@ -27,7 +27,7 @@ public class ModeleListeVehicule extends AbstractListModel{
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public Vehicule getElementAt(int index) {
         Vehicule v = vehicules.get(index);
         String typeVehicule = null;
         if(v instanceof VehiculeIntervention)
@@ -38,7 +38,7 @@ public class ModeleListeVehicule extends AbstractListModel{
             typeVehicule = "Véhicule de transport employé";
         if(v instanceof VehiculeTransportPassage)
             typeVehicule = "Véhicule de transport passager";
-        return typeVehicule + " " + v.getImmatriculation() + " " + v.getCategorie().toString() + " " + v.getKilometrageAnnuel() + " km annuel " + v.getKilometrageAnnuel() + " km après révision " +v.getTempsCirculation() + " jours ";
+        return v;
     }
     
 }

@@ -8,6 +8,7 @@ package gestparc.vue;
 
 import gestparc.controleur.Controleur;
 import gestparc.modele.CellRendererListeVehicule;
+import gestparc.modele.ModeleListeIntervention;
 import gestparc.modele.ModeleListeVehicule;
 import gestparc.modele.Vehicule;
 import java.util.List;
@@ -36,7 +37,7 @@ public class TableauBord extends javax.swing.JFrame {
         }
         initComponents();
         jListVehicule.setModel(new DefaultComboBoxModel());
-        jListIntervention.setModel(new DefaultComboBoxModel());
+        jListIntervention.setModel(new ModeleListeIntervention(null));
         this.setVisible(true);
     }
     
@@ -44,10 +45,15 @@ public class TableauBord extends javax.swing.JFrame {
     {
         int sel = jListVehicule.getSelectedIndex();
         jListVehicule.setModel(new ModeleListeVehicule(vehicules));
-        jListVehicule.setCellRenderer(new CellRendererListeVehicule(vehicules));
+        jListVehicule.setCellRenderer(new CellRendererListeVehicule());
         jListVehicule.validate();
         jListVehicule.setSelectedIndex(sel);
         jListVehiculeMouseClicked(null);
+    }
+    
+    public Vehicule getSelectedItem()
+    {
+        return (Vehicule) jListVehicule.getSelectedValue();
     }
 
     /**
@@ -196,7 +202,7 @@ public class TableauBord extends javax.swing.JFrame {
      * @param evt l'évènement
      */
     private void jAjouterInterventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAjouterInterventionActionPerformed
-        
+        ctrl.afficherAjoutInterventionVue();
     }//GEN-LAST:event_jAjouterInterventionActionPerformed
 
     /**
@@ -207,6 +213,7 @@ public class TableauBord extends javax.swing.JFrame {
         if(jListVehicule.getSelectedIndex() != -1)
         {
             jDetailVehicule.setText(ctrl.getVehicules().get(jListVehicule.getSelectedIndex()).toString());
+            jListIntervention.setModel(new ModeleListeIntervention(ctrl.getVehicules().get(jListVehicule.getSelectedIndex()).getInterventions()));
         }
     }//GEN-LAST:event_jListVehiculeMouseClicked
 
