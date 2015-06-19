@@ -7,7 +7,9 @@
 package gestparc.modele;
 
 import gestparc.modele.enums.PieceCarrosserie;
+import gestparc.modele.enums.PieceMecanique;
 import gestparc.modele.enums.TypeCarrosserie;
+import gestparc.modele.enums.TypeMecanique;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,11 +21,11 @@ import static org.junit.Assert.*;
  *
  * @author vpivet
  */
-public class InterventionCarrosserieTest {
+public class InterventionMecaniqueTest {
     
-    private InterventionCarrosserie instance;
+    private InterventionMecanique instance;
     
-    public InterventionCarrosserieTest() {
+    public InterventionMecaniqueTest() {
     }
     
     @BeforeClass
@@ -36,32 +38,33 @@ public class InterventionCarrosserieTest {
     
     @Before
     public void setUp() {
-        instance = new InterventionCarrosserie(TypeCarrosserie.RAYURE, PieceCarrosserie.CAPOT);
+        instance = new InterventionMecanique(TypeMecanique.FIXATION, PieceMecanique.AUTRE);
     }
     
     @After
     public void tearDown() {
+        instance = null;
     }
 
     /**
-     * Test of getTypeIntervention method, of class InterventionCarrosserie.
+     * Test of getTypeIntervention method, of class InterventionMecanique.
      */
     @Test
     public void testGetTypeIntervention() {
         System.out.println("getTypeIntervention");
-        TypeCarrosserie expResult = TypeCarrosserie.RAYURE;
-        TypeCarrosserie result = instance.getTypeIntervention();
+        TypeMecanique expResult = TypeMecanique.FIXATION;
+        TypeMecanique result = instance.getTypeIntervention();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of getPiece method, of class InterventionCarrosserie.
+     * Test of getPiece method, of class InterventionMecanique.
      */
     @Test
     public void testGetPiece() {
         System.out.println("getPiece");
-        PieceCarrosserie expResult = PieceCarrosserie.CAPOT;
-        PieceCarrosserie result = instance.getPiece();
+        PieceMecanique expResult = PieceMecanique.AUTRE;
+        PieceMecanique result = instance.getPiece();
         assertEquals(expResult, result);
     }
     
